@@ -86,8 +86,8 @@ static int sampToI2sPwm(short s) {
 		if (outReg>0) w-=32767; else w+=32767; //Difference 2
 		w+=i2v; i2v=w; //Integrator 2
 		outReg=w;		//register
-		if (w>0) val|=1; //comparator
 		val<<=1; //next bit
+		if (w>0) val|=1; //comparator
 	}
 	return val;
 }

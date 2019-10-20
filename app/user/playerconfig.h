@@ -4,13 +4,13 @@
 /*
 Define the access point name and its password here.
 */
-#define AP_NAME "HOMEAP"
-#define AP_PASS "01234567890"
+#define AP_NAME "TELUS4214"
+#define AP_PASS "r28zmppvyn"
 
 /* Define stream URL here. For example, the URL to the MP3 stream of a certain Dutch radio station
 is http://icecast.omroep.nl/3fm-sb-mp3 . This translates of a server name of "icecast.omroep.nl"
 and a path of "/3fm-sb-mp3". The port usually is 80 (the standard HTTP port) */
-#if 1
+#if 0
 #define PLAY_SERVER "icecast.omroep.nl"
 #define PLAY_PATH "/3fm-sb-mp3"
 #define PLAY_PORT 80
@@ -38,6 +38,12 @@ rate! */
 #if 0
 #define PLAY_SERVER "meuk.spritesserver.nl"
 #define PLAY_PATH "/Ii.Romanzeandante.mp3"
+#define PLAY_PORT 80
+#endif
+
+#if 1
+#define PLAY_SERVER "str2.openstream.co"
+#define PLAY_PATH "/540"
 #define PLAY_PORT 80
 #endif
 

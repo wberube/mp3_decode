@@ -4,15 +4,15 @@
 #
 #############################################################
 
-ESPOPTION ?= -p COM2 -b 230400
+ESPOPTION ?= -p /dev/ttyUSB0 -b 460800
 
-GENIMAGEOPTION = -ff 80m -fm qio -fs 4m
+GENIMAGEOPTION = -ff 40m -fm dio -fs 32m
 
 ADDR_FW1 = 0x00000
 ADDR_FW2 = 0x09000
 
 # Base directory for the compiler
-XTENSA_TOOLS_ROOT ?= c:/Espressif/xtensa-lx106-elf/bin
+XTENSA_TOOLS_ROOT ?= /opt/esp-open-sdk/xtensa-lx106-elf/bin
 #PATH := $(XTENSA_TOOLS_ROOT);$(PATH)
 
 # select which tools to use as compiler, librarian and linker
@@ -35,9 +35,7 @@ DEFAULTADDR := 0x7C000
 BLANKBIN := ./$(FIRMWAREDIR)/blank.bin
 BLANKADDR := 0x7E000
 
-SDK_TOOLS	?= c:/Espressif/utils
-#ESPTOOL		?= $(SDK_TOOLS)/esptool
-ESPTOOL		?= C:/Python27/python.exe $(CWD)esptool.py
+ESPTOOL		?= esptool
 
 CSRCS ?= $(wildcard *.c)
 ASRCs ?= $(wildcard *.s)
@@ -115,7 +113,7 @@ endef
 $(BINODIR)/%.bin: $(IMAGEODIR)/%.out
 	@mkdir -p ../$(FIRMWAREDIR)
 	@echo "------------------------------------------------------------------------------"
-	@$(ESPTOOL) elf2image -es user_start_trampoline -o ../$(FIRMWAREDIR)/ $(flashimageoptions) $<
+	@$(ESPTOOL) elf2image -o ../$(FIRMWAREDIR)/ $(flashimageoptions) $<
 	@echo "------------------------------------------------------------------------------"
 
 
